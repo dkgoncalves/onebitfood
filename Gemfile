@@ -3,6 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# Use Ransack
+gem 'ransack'
+# Use geocoder
+gem 'geocoder', '~> 1.5', '>= 1.5.1'
+# Use active model serializers
+gem 'active_model_serializers', '~> 0.10.2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
