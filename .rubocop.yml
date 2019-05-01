@@ -1,0 +1,135 @@
+AllCops:
+  Exclude:
+    # You could specify set of files or dirs while you want to be ignored by rubocop
+    - "Gemfile"
+    - "Gemfile.lock"
+    - "Rakefile"
+    - "bin/*"
+    - "config/**/*"
+    - "db/**/*.rb"
+    - "lib/**/*.rake"
+    - "node_modules/**/*"
+    - "script/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "app/models/admin/ability_model.rb"
+  TargetRubyVersion: 2.5.1
+
+# custom enforced rules
+Rails:
+  Enabled: true
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+Layout/EmptyLineAfterGuardClause: # maybe turn on later
+  Enabled: false
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  IndentationWidth: 2
+Style/BracesAroundHashParameters:
+  Enabled: true
+  EnforcedStyle: context_dependent
+Style/ParallelAssignment:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/SafeNavigation:
+  Enabled: false
+Style/NumericPredicate: # use positive? instead of > 0
+  Enabled: false
+
+# tell rubocop about staging
+# Rails/UnknownEnv:
+#   Environments:
+#     - development
+#     - production
+#     - staging
+#     - test
+
+# when we get close to zero issues: get people to agree on fair values here.
+Metrics/AbcSize:
+  Max: 100 # default value: 15
+Metrics/ClassLength:
+  Max: 250
+Metrics/LineLength:
+  Max: 200
+Metrics/MethodLength:
+  Max: 30
+Metrics/CyclomaticComplexity:
+  Max: 10 # default: 6
+Metrics/PerceivedComplexity:
+  Max: 10 # default: 7
+
+# allow specs to use ambiguous blocks
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*.rb"
+
+# allow specs to create unused variables
+Lint/UselessAssignment:
+  Exclude:
+    - "spec/**/*.rb"
+
+# allow specs, rakefiles and spreadsheet templates to go over BlockLength
+Metrics/BlockLength:
+  Exclude:
+    - "**/*.axlsx"
+    - "**/*.rake"
+    - "app/controllers/concerns/*.rb"
+    - "spec/**/*.rb"
+
+# know the rules well, so you can break them effectively
+Naming/AccessorMethodName:
+  Enabled: false
+
+# disable pridicate name
+Naming/PredicateName:
+    Enabled: false
+
+# disable enforcing "delegate :foo, to: :bar"
+Rails/Delegate:
+  Enabled: false
+
+# has_and_belongs_to_many is fine
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+# allow specs to save models w/o validations
+Rails/SkipsModelValidations:
+  Exclude:
+    - "spec/**/*.rb"
+
+# allow specs to change method visibility
+Style/AccessModifierDeclarations:
+    Exclude:
+      - "spec/**/*.rb"
+
+# turns out staging environment actually exists
+# Rails/UnknownEnv:
+#   Environments:
+#     - development
+#     - production
+#     - staging
+#     - test
+
+# allow specs to use {} as multi-line block delimiters
+Style/BlockDelimiters:
+  Exclude:
+    - "spec/**/*.rb"
+
+# disabling return foo if x? because it's not the best style everytime
+Style/GuardClause:
+  Enabled: false
+
+# should we enforce those?
+Style/SymbolArray:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+
+# Disable documentation cop
+Documentation:
+  Enabled: false
